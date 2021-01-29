@@ -63,5 +63,35 @@ yarn add react-wrappable-fluid-grid
 [visit live docs](https://react-wrappable-fluid-grid.vercel.app/)
 
 
+## Typescript
+
+```tsx
+import React from 'react';
+import Grid from 'react-wrappable-fluid-grid';
+
+interface DataItem {
+  value: number;
+}
+
+function GridParent: React.FC<any>(){
+  const data: DataItem[] = [
+    { value: 1 }
+  ];
+
+  return (
+    <Grid<DataItem>
+      data={data}
+    >
+      {(dataItem, i, colWidth) => {
+        return (
+          <div>{dataItem.value}</div>
+        )
+      }}
+    </Grid>
+  );
+}
+
+```
+
 
 

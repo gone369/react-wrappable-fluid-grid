@@ -23,7 +23,7 @@ export function Grid<DataItem extends any>(props: {
   minColWidth?: number;
   maxColWidth?: number;
   minMaxWeight?: number; // [0 - 1] default: 0.5. weighted average of column width min/max balance. 1 is more lenient towards maximum column width, meaning wider columns. 0 is more lenient towards minimum column width, meaning skinnier columns
-  children: (dataItem?: DataItem, index?: number, columnWidth?: number) => any;
+  children: (dataItem: DataItem, index: number, columnWidth: number) => any;
 }) {
   const {
     data,
