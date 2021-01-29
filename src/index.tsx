@@ -18,6 +18,7 @@ const getColWidth = memoize((colSize, rowWidth, gap) => {
 export function Grid<DataItem extends any>(props: {
   style?: Record<string, any>;
   className?: string;
+  itemClassName?: string;
   data: DataItem[];
   gap?: number | { x: number; y: number };
   minColWidth?: number;
@@ -31,6 +32,7 @@ export function Grid<DataItem extends any>(props: {
     children,
     style = {},
     className = '',
+    itemClassName = '',
     minColWidth = 0,
     maxColWidth = 99999,
     minMaxWeight = 0.5,
@@ -93,7 +95,11 @@ export function Grid<DataItem extends any>(props: {
             marginBottom: i < data.length - colSize ? gapy : 0,
           };
           return (
-            <div style={gridItemStyle} key={i}>
+            <div
+              className={`rwfg-item ${itemClassName}`}
+              style={gridItemStyle}
+              key={i}
+            >
               {typeof children === 'function' &&
                 children(dataItem, i, colWidth)}
             </div>
