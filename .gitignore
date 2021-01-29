@@ -4,4 +4,5 @@ dist
 *.gif
 .docz
 docs
+.DS_Store
 
