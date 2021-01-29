@@ -1,0 +1,190 @@
+---
+name: Examples
+route: /
+---
+
+import { Playground, Props } from 'docz';
+import Grid from './index.tsx';
+
+# Wrappable Fluid Grid
+
+## Properties
+
+<Props of={Grid} />
+
+## Simplest usage
+
+```jsx
+import Grid from 'react-wrappable-fluid-grid';
+```
+
+<Playground>
+  <Grid data={[1, 2, 3]}>{(n) => n}</Grid>
+</Playground>
+
+## Basic usage
+
+Start By:
+
+1. Input data array
+2. Define gap spacing in px
+3. Define minimum column width
+
+** Resize the screen to try it out **
+
+<Playground>
+  <Grid
+    data={[
+      { value: 1 },
+      { value: 2 },
+      { value: 3 },
+      { value: 4 },
+      { value: 5 },
+      { value: 6 },
+    ]}
+    gap={10}
+    minColWidth={100}
+  >
+    {({ value }) => {
+      return (
+        <div style={{ background: '#efefef', textAlign: 'center' }}>
+          {value}
+        </div>
+      );
+    }}
+  </Grid>
+</Playground>
+
+## Specifing a Maximum Column Width
+
+<div style={{ marginTop: 400 }}>&nbsp;</div>
+
+<Playground>
+  <Grid
+    data={[
+      { value: 1 },
+      { value: 2 },
+      { value: 3 },
+      { value: 4 },
+      { value: 5 },
+      { value: 6 },
+    ]}
+    gap={10}
+    minColWidth={160}
+    maxColWidth={200}
+  >
+    {({ value }, i, columnWidth) => {
+      return (
+        <div style={{ background: '#efefef', textAlign: 'center' }}>
+          {value}
+          <div style={{ fontSize: '0.7rem' }}>
+            width: {columnWidth.toFixed(2)}
+          </div>
+        </div>
+      );
+    }}
+  </Grid>
+</Playground>
+
+<div style={{ marginBottom: 400 }}>&nbsp;</div>
+
+## Custom Horizontal and Vertical Gap Spacing
+
+<Playground>
+  <Grid
+    data={[
+      { value: 1 },
+      { value: 2 },
+      { value: 3 },
+      { value: 4 },
+      { value: 5 },
+      { value: 6 },
+    ]}
+    gap={{
+      x: 10,
+      y: 50,
+    }}
+    minColWidth={160}
+    maxColWidth={200}
+  >
+    {({ value }, i, columnWidth) => {
+      return (
+        <div style={{ background: '#efefef', textAlign: 'center' }}>
+          {value}
+          <div style={{ fontSize: '0.7rem' }}>
+            width: {columnWidth.toFixed(2)}
+          </div>
+        </div>
+      );
+    }}
+  </Grid>
+</Playground>
+
+## Custom Column Width Weightings
+
+description: weighted average of column width's min/max balance.  
+1 is more lenient towards maximum column width, meaning wider columns.  
+0 is more lenient towards minimum column width, meaning skinnier columns
+
+value: from 0 to 1  
+defaultValue: 0.5
+
+### Weight = 1
+
+<Playground>
+  <Grid
+    data={[
+      { value: 1 },
+      { value: 2 },
+      { value: 3 },
+      { value: 4 },
+      { value: 5 },
+      { value: 6 },
+    ]}
+    gap={10}
+    minColWidth={160}
+    maxColWidth={200}
+    minMaxWeight={1}
+  >
+    {({ value }, i, columnWidth) => {
+      return (
+        <div style={{ background: '#efefef', textAlign: 'center' }}>
+          {value}
+          <div style={{ fontSize: '0.7rem' }}>
+            width: {columnWidth.toFixed(2)}
+          </div>
+        </div>
+      );
+    }}
+  </Grid>
+</Playground>
+
+### Weight = 0
+
+<Playground>
+  <Grid
+    data={[
+      { value: 1 },
+      { value: 2 },
+      { value: 3 },
+      { value: 4 },
+      { value: 5 },
+      { value: 6 },
+    ]}
+    gap={10}
+    minColWidth={160}
+    maxColWidth={200}
+    minMaxWeight={0}
+  >
+    {({ value }, i, columnWidth) => {
+      return (
+        <div style={{ background: '#efefef', textAlign: 'center' }}>
+          {value}
+          <div style={{ fontSize: '0.7rem' }}>
+            width: {columnWidth.toFixed(2)}
+          </div>
+        </div>
+      );
+    }}
+  </Grid>
+</Playground>
