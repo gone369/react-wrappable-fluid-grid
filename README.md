@@ -32,7 +32,7 @@ function GridParent(){
 }
 ```
 
-![Example GIF](https://i.imgur.com/Uu5GdMx.gif)  
+![Example GIF](https://i.imgur.com/rnGDjPY.gif)  
 
 [Original Size GIF](https://i.imgur.com/i0hft6t.gifv)
 
