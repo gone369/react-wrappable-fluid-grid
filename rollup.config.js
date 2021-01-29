@@ -6,12 +6,12 @@ export default {
   input: 'src/index.tsx',
   output: [
     {
-      file: 'dist/index.cjs',
+      file: pkg.main,
       format: 'cjs',
       exports: 'named',
     },
     {
-      file: pkg.main,
+      file: pkg.module,
       format: 'es',
     },
   ],
