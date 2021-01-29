@@ -32,8 +32,9 @@ function GridParent(){
 }
 ```
 
-![Example GIF](https://i.imgur.com/Ospz84j.gif)
-[Original Size GIF](https://i.imgur.com/i0hft6t.gif)
+![Example GIF](https://i.imgur.com/Uu5GdMx.gif)  
+
+[Original Size GIF](https://i.imgur.com/i0hft6t.gifv)
 
 
 ## Compatibility
