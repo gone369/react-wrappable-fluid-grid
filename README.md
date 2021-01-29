@@ -4,6 +4,10 @@ react-wrappable-fluid-grid is exactly like it sounds: A simple to use react flui
 
 No need to define breakpoints or spans. Give the grid item a min and max width and you're good to go.
 
+![Example GIF](https://i.imgur.com/rnGDjPY.gif)  
+
+[Original Size GIF](https://i.imgur.com/i0hft6t.gifv)
+
 ```jsx
 import React from 'react';
 import Grid from 'react-wrappable-fluid-grid'
@@ -32,9 +36,6 @@ function GridParent(){
 }
 ```
 
-![Example GIF](https://i.imgur.com/rnGDjPY.gif)  
-
-[Original Size GIF](https://i.imgur.com/i0hft6t.gifv)
 
 
 ## Compatibility
