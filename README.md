@@ -57,6 +57,7 @@ yarn add react-wrappable-fluid-grid
 
 ## Basic Usage
 
+[visit live docs](https://react-wrappable-fluid-grid.vercel.app/)
 
 
 
