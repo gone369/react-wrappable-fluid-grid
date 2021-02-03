@@ -82,7 +82,7 @@ export function Grid<DataItem extends any>(props: {
   }, [width, minColWidth, maxColWidth, gapx, data, minMaxWeight]);
 
   return (
-    <div style={{ ...style, width: '100%' }} ref={ref} className={className}>
+    <div style={{ width: '100%', ...style }} ref={ref} className={className}>
       {typeof colWidth === 'number' &&
         typeof colSize === 'number' &&
         Array.isArray(data) &&

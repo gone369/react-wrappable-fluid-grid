@@ -1,5 +1,8 @@
 # React Wrappable Fluid Grid
 
+[![npm](https://img.shields.io/npm/v/react-wrappable-fluid-grid.svg)](https://www.npmjs.com/package/react-wrappable-fluid-grid) ![license](https://img.shields.io/npm/l/react-wrappable-fluid-grid.svg) ![github-issues](https://img.shields.io/github/issues/gone369/react-wrappable-fluid-grid.svg) ![npm-downloads](https://img.shields.io/npm/dt/react-wrappable-fluid-grid.svg)
+
+
 react-wrappable-fluid-grid is exactly like it sounds: A simple to use react fluid grid component that auto wraps its items.
 
 No need to define breakpoints or spans. Give the grid item a min and max width and you're good to go.
