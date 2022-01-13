@@ -1,5 +1,6 @@
 import React from 'react';
 import memoize from 'fast-memoize';
+import chunk from 'lodash.chunk';
 
 import useResizeObserver from 'use-resize-observer';
 
@@ -69,39 +70,54 @@ export function Grid<DataItem extends any>(props: {
 
       const range = maxColSize - minColSize;
       // weight to either lean towards min or max
-      const colSize = Math.round(maxColSize - range * minMaxWeight);
+      let colSize = Math.round(maxColSize - range * minMaxWeight);
 
-      setColWidth(
-        Math.max(
-          Math.min(getColWidth(colSize, width, gapx), maxColWidth),
-          minColWidth
-        )
+      const colWidth = Math.max(
+        Math.min(getColWidth(colSize, width, gapx), maxColWidth),
+        minColWidth
       );
+
+      if (colSize * colWidth + (colSize - 1) * gapx > width) {
+        colSize -= 1;
+      }
+
+      setColWidth(colWidth);
       setColSize(colSize);
     }
   }, [width, minColWidth, maxColWidth, gapx, data, minMaxWeight]);
+
+  const rows: DataItem[][] = chunk(data, colSize);
 
   return (
     <div style={{ width: '100%', ...style }} ref={ref} className={className}>
       {typeof colWidth === 'number' &&
         typeof colSize === 'number' &&
         Array.isArray(data) &&
-        data.map((dataItem, i) => {
-          const gridItemStyle = {
-            display: 'inline-block',
-            width: colWidth,
-            paddingLeft: i % colSize === 0 ? 0 : gapx / 2,
-            paddingRight: i % colSize === colSize - 1 ? 0 : gapx / 2,
-            marginBottom: i < data.length - colSize ? gapy : 0,
-          };
+        rows.map((row, i: number) => {
           return (
             <div
-              className={`rwfg-item ${itemClassName}`}
-              style={gridItemStyle}
+              className="rwfg-row"
               key={i}
+              style={{ marginBottom: i < rows.length - 1 ? gapy : 0 }}
             >
-              {typeof children === 'function' &&
-                children(dataItem, i, colWidth)}
+              {row.map((col, j) => {
+                const gridItemStyle = {
+                  display: 'inline-block',
+                  width: colWidth,
+                  paddingLeft: j % colSize === 0 ? 0 : gapx / 2,
+                  paddingRight: j % colSize === colSize - 1 ? 0 : gapx / 2,
+                };
+                return (
+                  <div
+                    className={`rwfg-item ${itemClassName}`}
+                    style={gridItemStyle}
+                    key={j}
+                  >
+                    {typeof children === 'function' &&
+                      children(col, j + i * colSize, colWidth)}
+                  </div>
+                );
+              })}
             </div>
           );
         })}
